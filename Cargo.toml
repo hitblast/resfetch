@@ -1,8 +1,14 @@
 [package]
 name = "resfetch"
 version = "1.0.0"
-authors = ["furtidev"]
+authors = ["furtidev <megaphone@poto.cafe>"]
 edition = "2021"
+description = "A fast and minimal alternative to neofetch"
+keywords = ["system", "neofetch", "fetch", "sysfetch", "cli"]
+repository = "https://github.com/furtidev/resfetch"
+license = "MIT"
+readme = "README.md"
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
