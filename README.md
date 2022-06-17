@@ -3,7 +3,8 @@
 
 A fast and minimal alternative to neofetch
 
-<img src="static/screenshot_1.png" alt="snapshot">
+<img src="static/screenshot_1.png" alt="snapshot"> 
+<sub><sup>(this isn't my spec lol)</sup></sub>
 
 </div>
 
