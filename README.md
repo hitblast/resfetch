@@ -9,7 +9,10 @@ A fast and minimal alternative to neofetch
 </div>
 
 ## Installattion
-*coming soon*
+### Cargo
+```bash
+cargo install resfetch
+```
 
 ## Third-party libs I used
 - [libmacchina](https://github.com/Macchina-CLI/libmacchina)
