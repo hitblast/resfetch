@@ -1,6 +1,6 @@
 [package]
 name = "resfetch"
-version = "1.0.0"
+version = "1.0.1"
 authors = ["furtidev <megaphone@poto.cafe>"]
 edition = "2021"
 description = "A fast and minimal alternative to neofetch"
