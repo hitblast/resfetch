@@ -11,6 +11,6 @@ A fast and minimal alternative to neofetch
 ## Installattion
 *coming soon*
 
-## Dependencies 
+## Third-party libs I used
 - [libmacchina](https://github.com/Macchina-CLI/libmacchina)
 - [colored](https://crates.io/crates/colored)
