@@ -7,8 +7,8 @@ A fast and minimal alternative to neofetch
 
 </div>
 
-## Install
-*comming soon*
+## Installattion
+*coming soon*
 
 ## Dependencies 
 - [libmacchina](https://github.com/Macchina-CLI/libmacchina)
