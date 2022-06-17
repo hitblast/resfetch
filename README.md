@@ -3,6 +3,10 @@
 
 A fast and minimal alternative to neofetch
 
+<a href="https://crates.io/crates/resfetch">
+    <img src="https://img.shields.io/crates/v/resfetch?label=Version&style=for-the-badge" alt="version" />
+</a>
+
 <img src="static/screenshot_1.png" alt="snapshot"> <br>
 <sub><sup>(this isn't my spec lol)</sup></sub>
 
