@@ -1,4 +1,4 @@
-use libmacchina::{GeneralReadout, MemoryReadout};
+use libmacchina::{GeneralReadout, MemoryReadout, BatteryReadout};
 use colored::*;
 
 fn main() {
@@ -32,6 +32,10 @@ fn main() {
     // memory readout
         use libmacchina::traits::MemoryReadout as _;
         let memory_readout = MemoryReadout::new();
+    
+    // battery readout
+        use libmacchina::traits::BatteryReadout as _;
+        let battery_readout = BatteryReadout::new();
 
     // Uptime Related variables
         let uptime = general_readout.uptime().unwrap() as usize;
@@ -48,7 +52,15 @@ fn main() {
         let used_ram = memory_readout.used().unwrap() as usize;
         let used_ram = used_ram / 1024;
         let machine = general_readout.machine().unwrap();
-        
+        let battery_percentage = battery_readout.percentage();
+        let mut _battery_text: String = "".to_string();
+    
+    // Check if battery data is available
+        match battery_percentage {
+            Ok(res) => {_battery_text = res.to_string();},
+            Err(_) => {_battery_text = "not available".to_string()}
+        }
+    
     // Determine Operating System and Print ASCII
         if (os.to_lowercase()).contains("microsoft") {
             for i in 0..(_windows.len()) {
@@ -71,6 +83,7 @@ fn main() {
     {}    {}
     {}    {}
     {}   {} / {} MB
+    {}   {}%
 
     {}
 
@@ -81,7 +94,9 @@ fn main() {
        "os".bright_purple(), os,
        "up".bright_red(), uptime,
        "ram".bright_yellow(), used_ram, total_ram,
+       "bat".bright_green(), _battery_text,
        "~ hardware info ~".bright_blue(),
        "cpu".bright_green(), cpu,
-       "model".bright_cyan(), machine,);
+       "model".bright_cyan(), machine,
+    );
 }
