@@ -7,7 +7,6 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  FILE_NAME: resfetch-mac.tar.gz
 
 jobs:
   build:
@@ -24,12 +23,12 @@ jobs:
       run: cargo test --release --verbose
 
     - name: Compress
-      run: cd target/release && tar -czf $FILE_NAME resfetch
+      run: cd target/release && tar -czf resfetch-mac.tar.gz resfetch
 
     - name: Upload to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: target/release/$FILE_NAME
+        file: target/release/resfetch-mac.tar.gz
         tag: ${{ github.ref }}
         overwrite: true
