@@ -15,7 +15,16 @@ A fast and minimal alternative to neofetch
 ## Installattion
 ### Cargo
 ```bash
-cargo install resfetch
+$ cargo install resfetch
+```
+
+### Homebrew
+```bash
+# tapping the formula
+$ brew tap hitblast/resfetch
+
+# installing it
+$ brew install resfetch
 ```
 
 ## Third-party libs I used
