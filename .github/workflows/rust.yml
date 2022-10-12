@@ -33,4 +33,3 @@ jobs:
         file: target/release/$FILE_NAME
         tag: ${{ github.ref }}
         overwrite: true
-        file_glob: true
