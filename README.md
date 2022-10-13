@@ -27,6 +27,15 @@ $ brew tap hitblast/resfetch
 $ brew install resfetch
 ```
 
+## Docker
+```bash
+# building image
+$ docker build -t resfetch .
+
+# running
+$ docker run resfetch
+```
+
 ## Dependencies Used
 - [libmacchina](https://github.com/Macchina-CLI/libmacchina)
 - [colored](https://crates.io/crates/colored)
