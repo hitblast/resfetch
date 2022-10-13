@@ -8,5 +8,8 @@ COPY . .
 # Build program for release
 RUN cargo build --release
 
+# Run tests
+RUN cargo test --release
+
 # Run the binary
 CMD ["./target/release/resfetch"]
