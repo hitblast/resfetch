@@ -1,15 +1,11 @@
-# Use the Rust official image from Docker
-FROM rust:1.64
-
-# Copy the files to the Docker image
+# builder stage
+FROM rust:1.64 AS builder
 WORKDIR /app
 COPY . .
-
-# Build program for release
 RUN cargo build --release
 
-# Run tests
-RUN cargo test --release
-
-# Run the binary
-CMD ["./target/release/resfetch"]
+# executable stage
+FROM scratch
+USER 1000
+COPY --from=builder ./target/release/resfetch .
+CMD ["./resfetch"]
