@@ -25,10 +25,10 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
-        name: resfetch
-        path: target/release/deps/*.exe
+        name: resfetch-win
+        path: target/release/deps/resfetch.exe
 
-  build-non-win:
+  build-unix:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
@@ -48,5 +48,5 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
-        name: resfetch
+        name: resfetch-${{ matrix.os }}
         path: target/release/resfetch
