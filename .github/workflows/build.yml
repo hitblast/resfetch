@@ -9,20 +9,42 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
+  build-win:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Build
+      run: cargo build --release --verbose
+
+    - name: Run tests
+      run: cargo test --release --verbose
+
+    - name: Upload to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: target/release/deps/*
+        tag: ${{ github.ref }}
+        overwrite: true
+        file_glob: true
+
+  build-non-win:
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest]
 
     runs-on: ${{ matrix.os }}
 
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-      
+
     - name: Build
       run: cargo build --release --verbose
-      
+
     - name: Run tests
       run: cargo test --release --verbose
 
