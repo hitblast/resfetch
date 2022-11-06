@@ -22,14 +22,11 @@ jobs:
     - name: Run tests
       run: cargo test --release --verbose
 
-    - name: Upload to release
-      uses: svenstaro/upload-release-action@v2
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
       with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: target/release/deps/*
-        tag: ${{ github.ref }}
-        overwrite: true
-        file_glob: true
+        name: resfetch
+        path: target/release/deps/*.exe
 
   build-non-win:
     strategy:
@@ -48,13 +45,8 @@ jobs:
     - name: Run tests
       run: cargo test --release --verbose
 
-    - name: Rename
-      run: cd target/release && mv resfetch resfetch-${{ matrix.os }}
-
-    - name: Upload to release
-      uses: svenstaro/upload-release-action@v2
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
       with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: target/release/resfetch-${{ matrix.os }}
-        tag: ${{ github.ref }}
-        overwrite: true
+        name: resfetch
+        path: target/release/resfetch
