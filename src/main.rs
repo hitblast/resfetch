@@ -62,19 +62,23 @@ fn main() {
         }
     
     // Determine Operating System and Print ASCII
-        if (os.to_lowercase()).contains("microsoft") {
-            for i in 0..(_windows.len()) {
-                    println!("    {}", _windows[i]);
+    match os.to_lowercase().as_str() {
+        "microsoft" => {
+            for i in 0.._windows.len() {
+                println!("    {}", _windows[i]);
             }
-        } else if (os.to_lowercase()).contains("macos") {
-            for i in 0..(_macos.len()) {
-                    println!("    {}", _macos[i]);
+        },
+        "macos" => {
+            for i in 0.._macos.len() {
+                println!("    {}", _macos[i]);
             }
-        } else {
-            for i in 0..(_linux.len()) {
-                    println!("    {}", _linux[i]);
+        },
+        _ => {
+            for i in 0.._linux.len() {
+                println!("    {}", _linux[i]);
             }
-        }
+        },
+    }
 
     println!("
     {}
