@@ -1,4 +1,4 @@
-name: Build
+name: Release
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Build
       run: cargo build --release --verbose
@@ -23,7 +23,7 @@ jobs:
       run: cargo test --release --verbose
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: resfetch-win
         path: target/release/deps/resfetch.exe
@@ -37,7 +37,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Build
       run: cargo build --release --verbose
@@ -46,7 +46,7 @@ jobs:
       run: cargo test --release --verbose
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: resfetch-${{ matrix.os }}
         path: target/release/resfetch
