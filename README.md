@@ -3,13 +3,9 @@
 # <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/rust/rust.png" style="width: 40px; height: auto;"> resfetch
 ### A fast and minimal alternative to neofetch
 
-<a href="https://crates.io/crates/resfetch">
-    <img src="https://img.shields.io/crates/v/resfetch?label=version" alt="version" />
-</a>
-
+[![Version](https://img.shields.io/crates/v/resfetch?label=version)](https://crates.io/crates/resfetch)
 [![Test Builds](https://github.com/hitblast/resfetch/actions/workflows/build.yml/badge.svg)](https://github.com/hitblast/resfetch/actions/workflows/build.yml)
 [![Release Builds](https://github.com/hitblast/resfetch/actions/workflows/release.yml/badge.svg)](https://github.com/hitblast/resfetch/actions/workflows/release.yml)
-
 
 <img src="static/preview.png" style="width: 500px; height: auto;" alt="snapshot"> <br>
 
