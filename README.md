@@ -7,7 +7,7 @@
     <img src="https://img.shields.io/crates/v/resfetch?label=version" alt="version" />
 </a>
 
-<img src="static/preview.png" style="width: 300px; height: auto;" alt="snapshot"> <br>
+<img src="static/preview.png" style="width: 500px; height: auto;" alt="snapshot"> <br>
 
 </div>
 
