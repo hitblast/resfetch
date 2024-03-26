@@ -66,24 +66,32 @@ fn main() {
         Ok(res) => {_battery_text = res.to_string();},
         Err(_) => {_battery_text = "not available".to_string()}
     }
+
+    // Clear terminal window first
+    print!("\x1B[2J\x1B[1;1H");
     
     // Determine Operating System and Print ASCII
-    match os.to_lowercase().as_str() {
-        "microsoft" => {
-            for i in 0.._windows.len() {
-                println!("    {}", _windows[i]);
+    match os.to_lowercase().split_whitespace().next() {
+        Some(platform) => {
+            match platform {
+                "microsoft" => {
+                    for i in 0.._windows.len() {
+                        println!("        {}", _windows[i]);
+                    }
+                },
+                "macos" => {
+                    for i in 0.._macos.len() {
+                        println!("        {}", _macos[i]);
+                    }
+                },
+                _ => {
+                    for i in 0.._linux.len() {
+                        println!("        {}", _linux[i]);
+                    }
+                },
             }
         },
-        "macos" => {
-            for i in 0.._macos.len() {
-                println!("    {}", _macos[i]);
-            }
-        },
-        _ => {
-            for i in 0.._linux.len() {
-                println!("    {}", _linux[i]);
-            }
-        },
+        None => {}
     }
 
     println!("
