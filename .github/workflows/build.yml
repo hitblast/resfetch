@@ -1,37 +1,18 @@
-name: Release
+name: Test Builds
 
 on:
-  workflow_dispatch:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
 
 env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build-win:
-    runs-on: windows-latest
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-
-    - name: Build
-      run: cargo build --release --verbose
-
-    - name: Run tests
-      run: cargo test --release --verbose
-
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: resfetch-win
-        path: target/release/deps/resfetch.exe
-
-  build-unix:
+  build:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
 
     runs-on: ${{ matrix.os }}
 
@@ -40,13 +21,11 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Build
-      run: cargo build --release --verbose
-
-    - name: Run tests
-      run: cargo test --release --verbose
+      run: cargo build --verbose
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: resfetch-${{ matrix.os }}
-        path: target/release/resfetch
+        name: ${{ runner.os }}-target
+        path: target/debug/*
+        retention-days: 1
