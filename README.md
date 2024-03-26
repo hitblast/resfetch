@@ -13,6 +13,7 @@ A fast and minimal alternative to neofetch
 </div>
 
 ## Installation
+
 ### Cargo
 ```bash
 $ cargo install resfetch
@@ -27,7 +28,7 @@ $ brew tap hitblast/resfetch
 $ brew install resfetch
 ```
 
-## Docker
+### Docker
 ```bash
 # building image
 $ docker build -t resfetch .
