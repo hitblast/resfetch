@@ -1,7 +1,7 @@
 <div align="center">
-<h1>resfetch</h1>
 
-A fast and minimal alternative to neofetch
+# <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/rust/rust.png" style="width: 30px; height: auto;"> resfetch
+### A fast and minimal alternative to neofetch
 
 <a href="https://crates.io/crates/resfetch">
     <img src="https://img.shields.io/crates/v/resfetch?label=version" alt="version" />
