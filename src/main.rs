@@ -1,3 +1,28 @@
+/* MIT License
+
+Copyright (c) 2024-present HitBlast
+Copyright (c) 2022-2024 furtidev
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. */
+
+
+// imports
 use libmacchina::{GeneralReadout, MemoryReadout, BatteryReadout};
 use colored::*;
 
@@ -30,7 +55,6 @@ fn main() {
         "   '-..-'|_.-''-._|"
     ];
 
-
     // general readout
     use libmacchina::traits::GeneralReadout as _;
     let general_readout = GeneralReadout::new();
@@ -43,13 +67,13 @@ fn main() {
     use libmacchina::traits::BatteryReadout as _;
     let battery_readout = BatteryReadout::new();
 
-    // Uptime Related variables
+    // uptime-related variables
     let uptime = general_readout.uptime().unwrap() as usize;
     let uptime_hours: String = ((uptime/60)/60).to_string();
     let uptime_minutes: String = ((uptime / 60) % 60).to_string();
     let uptime = format!("{} hours, {} minutes", uptime_hours, uptime_minutes);
 
-    // General Info Variables
+    // general info variables
     let username = general_readout.username().unwrap();
     let os = general_readout.os_name().unwrap();
     let cpu = general_readout.cpu_model_name().unwrap();
@@ -61,16 +85,16 @@ fn main() {
     let battery_percentage = battery_readout.percentage();
     let mut _battery_text: String = "".to_string();
     
-    // Check if battery data is available
+    // check if battery data is available
     match battery_percentage {
         Ok(res) => {_battery_text = res.to_string();},
         Err(_) => {_battery_text = "not available".to_string()}
     }
 
-    // Clear terminal window first
+    // clear terminal window before displaying ASCII
     print!("\x1B[2J\x1B[1;1H");
     
-    // Determine Operating System and Print ASCII
+    // determine operating system and print ASCII
     match os.to_lowercase().split_whitespace().next() {
         Some(platform) => {
             match platform {
@@ -94,6 +118,7 @@ fn main() {
         None => {}
     }
 
+    // print system info
     println!("
         {}
 
