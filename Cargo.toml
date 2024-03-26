@@ -1,11 +1,11 @@
 [package]
 name = "resfetch"
 version = "1.0.2"
-authors = ["furtidev <megaphone@poto.cafe>", "HitBlast <hitblastlive@gmail.com>"]
+authors = ["HitBlast <hitblastlive@gmail.com>", "furtidev <megaphone@poto.cafe>"]
 edition = "2021"
 description = "A fast and minimal alternative to neofetch"
 keywords = ["system", "neofetch", "fetch", "sysfetch", "cli"]
-repository = "https://github.com/furtidev/resfetch"
+repository = "https://github.com/hitblast/resfetch"
 license = "MIT"
 readme = "README.md"
 
@@ -13,5 +13,5 @@ readme = "README.md"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-libmacchina = "6"
-colored = "2.0.0"
+libmacchina = "7"
+colored = "2.1.0"
