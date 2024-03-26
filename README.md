@@ -1,6 +1,6 @@
 <div align="center">
 
-# <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/rust/rust.png" style="width: 40px; height: auto;"> resfetch
+# resfetch
 ### A fast and minimal alternative to neofetch
 
 [![Version](https://img.shields.io/crates/v/resfetch?label=version)](https://crates.io/crates/resfetch)
@@ -25,15 +25,6 @@ $ brew tap hitblast/resfetch
 
 # installing it
 $ brew install resfetch
-```
-
-### Docker
-```bash
-# building image
-$ docker build -t resfetch .
-
-# running
-$ docker run resfetch
 ```
 
 ## Dependencies Used
