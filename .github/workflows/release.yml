@@ -52,3 +52,14 @@ jobs:
         name: resfetch-${{ matrix.os }}
         path: target/release/resfetch
         retention-days: 90
+
+  publish:
+    needs: [build-win, build-unix]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Publish using cargo
+        run: cargo publish --token ${{ secrets.CRATES_TOKEN }}

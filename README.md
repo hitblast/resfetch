@@ -7,7 +7,7 @@
 [![Test Builds](https://github.com/hitblast/resfetch/actions/workflows/build.yml/badge.svg)](https://github.com/hitblast/resfetch/actions/workflows/build.yml)
 [![Release Builds](https://github.com/hitblast/resfetch/actions/workflows/release.yml/badge.svg)](https://github.com/hitblast/resfetch/actions/workflows/release.yml)
 
-<img src="static/preview.png" style="width: 500px; height: auto;" alt="snapshot"> <br>
+<img src="https://github.com/hitblast/resfetch/blob/main/static/preview.png" style="width: 500px; height: auto;" alt="snapshot"> <br>
 
 </div>
 
