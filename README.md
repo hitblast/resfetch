@@ -4,7 +4,7 @@
 A fast and minimal alternative to neofetch
 
 <a href="https://crates.io/crates/resfetch">
-    <img src="https://img.shields.io/crates/v/resfetch?label=Version&style=for-the-badge" alt="version" />
+    <img src="https://img.shields.io/crates/v/resfetch?label=version" alt="version" />
 </a>
 
 <img src="static/screenshot_1.png" alt="snapshot"> <br>
@@ -12,7 +12,7 @@ A fast and minimal alternative to neofetch
 
 </div>
 
-## Installattion
+## Installation
 ### Cargo
 ```bash
 $ cargo install resfetch
