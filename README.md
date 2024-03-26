@@ -7,6 +7,10 @@
     <img src="https://img.shields.io/crates/v/resfetch?label=version" alt="version" />
 </a>
 
+[![Test Builds](https://github.com/hitblast/resfetch/actions/workflows/build.yml/badge.svg)](https://github.com/hitblast/resfetch/actions/workflows/build.yml)
+[![Release Builds](https://github.com/hitblast/resfetch/actions/workflows/release.yml/badge.svg)](https://github.com/hitblast/resfetch/actions/workflows/release.yml)
+
+
 <img src="static/preview.png" style="width: 500px; height: auto;" alt="snapshot"> <br>
 
 </div>
