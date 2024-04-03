@@ -150,13 +150,14 @@ fn main() {
 
     // print cpu info
     if !cpu.is_empty() || !machine.is_empty() {
-        println!("  {}
-        {} {}
-        {} {}
-        ",
-        "~ hardware info ~".bright_blue(),
-        "cpu".bright_green(), cpu,
-        "model".bright_cyan(), machine,
-        );
+    println!("    {}
+
+    {} {}
+    {} {}
+    ",
+    "~ hardware info ~".bright_blue(),
+    "cpu".bright_green(), cpu,
+    "model".bright_cyan(), machine,
+    );
     }
 }
