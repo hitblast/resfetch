@@ -30,7 +30,16 @@ fn main() {
     // ascii art
     let _linux = [
         "    .--.",
-        "   |o_o |",
+        "   |^_^ |",
+        "   |:_/ |",
+        "  //   \\ \\",
+        " (|     | )",
+        "/'\\_   _/`\\",
+        "\\___)=(___/"
+    ];
+    let _linux_huh = [
+        "    .--.",
+        "   |o_o |  ??",
         "   |:_/ |",
         "  //   \\ \\",
         " (|     | )",
@@ -68,27 +77,27 @@ fn main() {
     let battery_readout = BatteryReadout::new();
 
     // uptime-related variables
-    let uptime = general_readout.uptime().unwrap() as usize;
-    let uptime_hours: String = ((uptime/60)/60).to_string();
+    let uptime = general_readout.uptime().unwrap_or_default();
+    let uptime_hours: String = ((uptime / 60) / 60).to_string();
     let uptime_minutes: String = ((uptime / 60) % 60).to_string();
     let uptime = format!("{} hours, {} minutes", uptime_hours, uptime_minutes);
 
-    // general info variables
-    let username = general_readout.username().unwrap();
-    let os = general_readout.os_name().unwrap();
-    let cpu = general_readout.cpu_model_name().unwrap();
-    let total_ram = memory_readout.total().unwrap() as usize;
-    let total_ram = total_ram / 1024;
-    let used_ram = memory_readout.used().unwrap() as usize;
-    let used_ram = used_ram / 1024;
-    let machine = general_readout.machine().unwrap();
+    // information variables
+    let username = general_readout.username().unwrap_or("unknown".to_string());
+    let os = general_readout.os_name().unwrap_or("unknown".to_string());
+    let cpu = general_readout.cpu_model_name().unwrap_or_default();
+    let total_ram = memory_readout.total().unwrap_or_default()  / 1024;
+    let used_ram = memory_readout.used().unwrap_or_default() / 1024;
+    let machine = general_readout.machine().unwrap_or_default();
+
+    // battery information
+    // (displayed only if battery is detected )
     let battery_percentage = battery_readout.percentage();
     let mut _battery_text: String = "".to_string();
     
-    // check if battery data is available
     match battery_percentage {
-        Ok(res) => {_battery_text = res.to_string();},
-        Err(_) => {_battery_text = "not available".to_string()}
+        Ok(res) => {_battery_text = res.to_string() + "%";},
+        Err(_) => {_battery_text = "undetected".to_string()}
     }
 
     // clear terminal window before displaying ASCII
@@ -100,46 +109,55 @@ fn main() {
             match platform {
                 "microsoft" => {
                     for i in 0.._windows.len() {
-                        println!("        {}", _windows[i]);
+                        println!("    {}", _windows[i]);
                     }
                 },
                 "macos" => {
                     for i in 0.._macos.len() {
-                        println!("        {}", _macos[i]);
+                        println!("    {}", _macos[i]);
                     }
                 },
                 _ => {
                     for i in 0.._linux.len() {
-                        println!("        {}", _linux[i]);
+                        println!("    {}", _linux[i]);
                     }
                 },
             }
         },
-        None => {}
+        None => {
+            for i in 0.._linux_huh.len() {
+                println!("    {}", _linux_huh[i]);
+            }
+        }
     }
 
     // print system info
     println!("
-        {}
+    {}
 
-        {}  {}
-        {}    {}
-        {}    {}
-        {}   {} / {} MB
-        {}   {}%
+    {}  {}
+    {}    {}
+    {}    {}
+    {}   {} / {} MB
+    {}   {}
+    ", "~ system info ~".bright_blue(),
+    "user".bright_yellow(), username,
+    "os".bright_purple(), os,
+    "up".bright_red(), uptime,
+    "ram".bright_yellow(), used_ram, total_ram,
+    "bat".bright_green(), _battery_text,
+    );
 
-        {}
+    // print cpu info
+    if !cpu.is_empty() || !machine.is_empty() {
+        println!("    {}
 
         {}   {}
         {} {}
-        ", "~ system info ~".bright_blue(),
-        "user".bright_yellow(), username,
-        "os".bright_purple(), os,
-        "up".bright_red(), uptime,
-        "ram".bright_yellow(), used_ram, total_ram,
-        "bat".bright_green(), _battery_text,
+        ",
         "~ hardware info ~".bright_blue(),
         "cpu".bright_green(), cpu,
         "model".bright_cyan(), machine,
-    );
+        );
+    }
 }
