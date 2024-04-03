@@ -77,16 +77,26 @@ fn main() {
     let battery_readout = BatteryReadout::new();
 
     // uptime-related variables
-    let uptime = general_readout.uptime().unwrap_or_default();
+    let uptime: usize = general_readout.uptime().unwrap_or_default();
+
+    let uptime_days: String = (uptime / (60 * 60 * 24)).to_string();
     let uptime_hours: String = ((uptime / 60) / 60).to_string();
     let uptime_minutes: String = ((uptime / 60) % 60).to_string();
-    let uptime = format!("{} hours, {} minutes", uptime_hours, uptime_minutes);
+
+    let mut uptime: String = format!("{} minutes", uptime_minutes);
+
+    if uptime_hours != "0" {
+        uptime = format!("{} hours, {}", uptime_hours, uptime);
+    }
+    if uptime_days != "0" {
+        uptime = format!("{} days, {}", uptime_days, uptime);
+    }
 
     // information variables
     let username = general_readout.username().unwrap_or("unknown".to_string());
     let os = general_readout.os_name().unwrap_or("unknown".to_string());
     let cpu = general_readout.cpu_model_name().unwrap_or_default();
-    let total_ram = memory_readout.total().unwrap_or_default()  / 1024;
+    let total_ram = memory_readout.total().unwrap_or_default() / 1024;
     let used_ram = memory_readout.used().unwrap_or_default() / 1024;
     let machine = general_readout.machine().unwrap_or_default();
 
