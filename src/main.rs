@@ -78,7 +78,7 @@ fn main() {
 
     // uptime-related variables
     let uptime: usize = general_readout.uptime().unwrap_or_default();
-    let uptime_hours: usize = (uptime / (60 * 60)) % 24;
+    let uptime_hours: usize = (uptime / 60) / 60;
     let uptime_minutes: usize = (uptime / 60) % 60;
     let mut uptime: String = format!("{} minutes", uptime_minutes);
 
