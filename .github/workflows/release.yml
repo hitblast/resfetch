@@ -54,7 +54,7 @@ jobs:
         retention-days: 90
 
   publish:
-    needs: [build-win, build-unix]
+    needs: [build-win]
     runs-on: ubuntu-latest
 
     steps:

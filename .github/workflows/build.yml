@@ -29,6 +29,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
+        os_name: [ubuntu, macos]
 
     runs-on: ${{ matrix.os }}
 
@@ -42,6 +43,6 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: resfetch-${{ matrix.os }}
+        name: resfetch-${{ matrix.os_name }}
         path: target/release/resfetch
         retention-days: 1
