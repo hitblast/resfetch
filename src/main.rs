@@ -83,7 +83,7 @@ fn main() {
     let mut uptime: String = format!("{} minutes", uptime_minutes);
 
     if uptime_hours != 0 {
-        uptime = format!("{} hours, {}", uptime_hours, uptime);
+        uptime = format!("{} hour(s) {}", uptime_hours, uptime);
     }
 
     // information variables
@@ -92,8 +92,9 @@ fn main() {
     let distro = general_readout.distribution().unwrap_or_default();
     let cpu = general_readout.cpu_model_name().unwrap_or_default();
     let cpu_cores = general_readout.cpu_cores().unwrap_or_default();
-    let total_ram = memory_readout.total().unwrap_or_default() / 1024;
-    let used_ram = memory_readout.used().unwrap_or_default() / 1024;
+    let total_ram = memory_readout.total().unwrap() as usize / 1024;
+    let used_ram = memory_readout.used().unwrap() as usize / 1024;
+    let cached_ram = memory_readout.cached().unwrap() as usize / 1024;
     let machine = general_readout.machine().unwrap_or_default();
 
     // battery information
@@ -156,13 +157,13 @@ fn main() {
     {}  {}
     {}    {} [{}]
     {}    {}
-    {}   {} / {} MB
+    {}   {} / {} MB ({} MB cached)
     {}   {}
     ", "~ system info ~".bright_blue(),
     "user".bright_yellow(), username,
     "os".bright_purple(), os, distro.bright_yellow(),
     "up".bright_red(), uptime,
-    "ram".bright_yellow(), used_ram, total_ram,
+    "ram".bright_yellow(), used_ram, total_ram, cached_ram,
     "bat".bright_green(), _battery_text,
     );
 
