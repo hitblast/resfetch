@@ -23,7 +23,7 @@ SOFTWARE. */
 
 
 // imports
-use libmacchina::{GeneralReadout, MemoryReadout, BatteryReadout};
+use libmacchina::{traits::BatteryState, BatteryReadout, GeneralReadout, MemoryReadout};
 use colored::*;
 
 fn main() {
@@ -78,11 +78,9 @@ fn main() {
 
     // uptime-related variables
     let uptime: usize = general_readout.uptime().unwrap_or_default();
-
     let uptime_days: String = (uptime / (60 * 60 * 24)).to_string();
     let uptime_hours: String = ((uptime / 60) / 60).to_string();
     let uptime_minutes: String = ((uptime / 60) % 60).to_string();
-
     let mut uptime: String = format!("{} minutes", uptime_minutes);
 
     if uptime_hours != "0" {
@@ -106,8 +104,20 @@ fn main() {
     let mut _battery_text: String = "".to_string();
     
     match battery_percentage {
-        Ok(res) => {_battery_text = res.to_string() + "%";},
-        Err(_) => {_battery_text = "undetected".to_string()}
+        Ok(res) => {
+            _battery_text = res.to_string() + "%";
+
+            match battery_readout.status() {
+                Ok(status) => {
+                    match status {
+                        BatteryState::Charging => {_battery_text = _battery_text + " (charging)"},
+                        BatteryState::Discharging => {_battery_text = _battery_text + " (discharging)"}
+                    }
+                },
+                Err(_) => {}
+            }
+        },
+        Err(_) => {_battery_text = "not found".to_string()}
     }
 
     // clear terminal window before displaying ASCII
