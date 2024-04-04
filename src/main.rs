@@ -78,16 +78,12 @@ fn main() {
 
     // uptime-related variables
     let uptime: usize = general_readout.uptime().unwrap_or_default();
-    let uptime_days: String = (uptime / (60 * 60 * 24)).to_string();
-    let uptime_hours: String = ((uptime / 60) / 60).to_string();
-    let uptime_minutes: String = ((uptime / 60) % 60).to_string();
+    let uptime_hours: usize = (uptime / (60 * 60)) % 24;
+    let uptime_minutes: usize = (uptime / 60) % 60;
     let mut uptime: String = format!("{} minutes", uptime_minutes);
 
-    if uptime_hours != "0" {
+    if uptime_hours != 0 {
         uptime = format!("{} hours, {}", uptime_hours, uptime);
-    }
-    if uptime_days != "0" {
-        uptime = format!("{} days, {}", uptime_days, uptime);
     }
 
     // information variables
