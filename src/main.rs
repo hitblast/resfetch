@@ -94,7 +94,6 @@ fn main() {
     let cpu_cores = general_readout.cpu_cores().unwrap_or_default();
     let total_ram = memory_readout.total().unwrap_or_default() / 1024;
     let used_ram = memory_readout.used().unwrap_or_default() / 1024;
-    let cached_ram = memory_readout.cached().unwrap_or_default() / 1024;
     let machine = general_readout.machine().unwrap_or_default();
 
     // battery information
@@ -157,13 +156,13 @@ fn main() {
     {}  {}
     {}    {} [{}]
     {}    {}
-    {}   {} / {} MB ({} MB cached)
+    {}   {} / {} MB
     {}   {}
     ", "~ system info ~".bright_blue(),
     "user".bright_yellow(), username,
     "os".bright_purple(), os, distro.bright_yellow(),
     "up".bright_red(), uptime,
-    "ram".bright_yellow(), used_ram, total_ram, cached_ram,
+    "ram".bright_yellow(), used_ram, total_ram,
     "bat".bright_green(), _battery_text,
     );
 
@@ -171,8 +170,8 @@ fn main() {
     if !cpu.is_empty() || !machine.is_empty() {
     println!("    {}
 
-    {}    {} ({} cores)
-    {}  {}
+    {}   {} ({} cores)
+    {} {}
     ",
     "~ hardware info ~".bright_blue(),
     "cpu".bright_green(), cpu, cpu_cores,
