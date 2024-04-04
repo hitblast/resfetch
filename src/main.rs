@@ -93,7 +93,7 @@ fn main() {
     // information variables
     let username = general_readout.username().unwrap_or("unknown".to_string());
     let os = general_readout.os_name().unwrap_or("unknown".to_string());
-    let distro = general_readout.distribution().unwrap_or("unknown".to_string());
+    let distro = general_readout.distribution().unwrap_or_default();
     let cpu = general_readout.cpu_model_name().unwrap_or_default();
     let cpu_cores = general_readout.cpu_cores().unwrap_or_default();
     let total_ram = memory_readout.total().unwrap_or_default() / 1024;
@@ -157,14 +157,14 @@ fn main() {
     println!("
     {}
 
-    {}   {}
-    {}   {} ({})
-    {}   {}
+    {}  {}
+    {}    {} [{}]
+    {}    {}
     {}   {} / {} MB
     {}   {}
     ", "~ system info ~".bright_blue(),
     "user".bright_yellow(), username,
-    "os".bright_purple(), os, distro,
+    "os".bright_purple(), os, distro.bright_yellow(),
     "up".bright_red(), uptime,
     "ram".bright_yellow(), used_ram, total_ram,
     "bat".bright_green(), _battery_text,
