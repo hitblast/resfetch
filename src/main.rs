@@ -174,8 +174,8 @@ fn main() {
     if !cpu.is_empty() || !machine.is_empty() {
     println!("    {}
 
-    {} {} ({} cores)
-    {} {}
+    {}    {} ({} cores)
+    {}  {}
     ",
     "~ hardware info ~".bright_blue(),
     "cpu".bright_green(), cpu, cpu_cores,
