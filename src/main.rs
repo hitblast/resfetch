@@ -92,9 +92,9 @@ fn main() {
     let distro = general_readout.distribution().unwrap_or_default();
     let cpu = general_readout.cpu_model_name().unwrap_or_default();
     let cpu_cores = general_readout.cpu_cores().unwrap_or_default();
-    let total_ram = memory_readout.total().unwrap() as usize / 1024;
-    let used_ram = memory_readout.used().unwrap() as usize / 1024;
-    let cached_ram = memory_readout.cached().unwrap() as usize / 1024;
+    let total_ram = memory_readout.total().unwrap_or_default() / 1024;
+    let used_ram = memory_readout.used().unwrap_or_default() / 1024;
+    let cached_ram = memory_readout.cached().unwrap_or_default() / 1024;
     let machine = general_readout.machine().unwrap_or_default();
 
     // battery information
